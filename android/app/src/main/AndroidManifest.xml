@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nutrition_buddy">
+    package="com.example.cs422_gr4_nutribuddy">
    <application
-        android:label="nutrition_buddy"
+        android:label="cs422_gr4_nutribuddy"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
