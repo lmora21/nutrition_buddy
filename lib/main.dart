@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'dietScreen.dart';
-import 'exerScreen.dart';
+
+List<bool> isChecked = List<bool>.generate(9, (index) => false);
 
 void main() {
   runApp(const MyApp());
@@ -44,9 +46,174 @@ class _MyHomePageState extends State<MyHomePage> {
         homeScreen,
         dietScreen,
         Column(
-          // TODO: Replace me
-          children: const <Widget>[
-            Text("Exercise Screen!"),
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Align(
+                alignment: Alignment.centerRight,
+                child: IconButton (
+                    onPressed: (){
+                      // TODO: go to calender screen
+                    },
+                    icon: const Icon(CupertinoIcons.calendar, size: 45),
+                    padding: const EdgeInsets.all(0)
+                )
+            ),
+            const Text("Today's Workout", style: TextStyle(fontSize: 50, decoration: TextDecoration.underline)),
+            const SizedBox(height: 20),
+            Expanded(
+              child: ListView (
+                scrollDirection: Axis.vertical,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Sit Ups (20 reps)", style: TextStyle(fontSize: 40)),
+                      Transform.scale(
+                          scale: 1.5,
+                          child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                  child:Checkbox(
+                                    value: isChecked[0],
+                                    onChanged: (bool? value) {setState(() {isChecked[0] = value!;});}
+                                  )
+                              )
+                          )
+                      ),
+                    ],
+                  ),
+                  const Divider(color: Colors.black),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Rest (2 minutes)", style: TextStyle(fontSize: 40)),
+                      Transform.scale(
+                          scale: 1.5,
+                          child: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child:Checkbox(
+                                  value: isChecked[1],
+                                  onChanged: (bool? value) {setState(() {isChecked[1] = value!;});}
+                              )
+                          )
+                      ),
+                    ],
+                  ),
+                  const Divider(color: Colors.black),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Push Ups (15 reps)", style: TextStyle(fontSize: 40)),
+                      Transform.scale(
+                          scale: 1.5,
+                          child: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child:Checkbox(
+                                  value: isChecked[2],
+                                  onChanged: (bool? value) {setState(() {isChecked[2] = value!;});}
+                              )
+                          )
+                      ),
+                    ],
+                  ),
+                  const Divider(color: Colors.black),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Rest (2 minutes)", style: TextStyle(fontSize: 40)),
+                      Transform.scale(
+                          scale: 1.5,
+                          child: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child:Checkbox(
+                                  value: isChecked[3],
+                                  onChanged: (bool? value) {setState(() {isChecked[3] = value!;});}
+                              )
+                          )
+                      ),
+                    ],
+                  ),
+                  const Divider(color: Colors.black),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Plank (1 minute)", style: TextStyle(fontSize: 40)),
+                      Transform.scale(
+                          scale: 1.5,
+                          child: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child:Checkbox(
+                                  value: isChecked[4],
+                                  onChanged: (bool? value) {setState(() {isChecked[4] = value!;});}
+                              )
+                          )
+                      ),
+                    ],
+                  ),
+                  const Divider(color: Colors.black),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Rest (1 minute)", style: TextStyle(fontSize: 40)),
+                      Transform.scale(
+                          scale: 1.5,
+                          child: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child:Checkbox(
+                                  value: isChecked[5],
+                                  onChanged: (bool? value) {setState(() {isChecked[5] = value!;});}
+                              )
+                          )
+                      ),
+                    ],
+                  ),
+                  const Divider(color: Colors.black),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Pull Ups (10 reps)", style: TextStyle(fontSize: 40)),
+                      Transform.scale(
+                          scale: 1.5,
+                          child: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child:Checkbox(
+                                  value: isChecked[6],
+                                  onChanged: (bool? value) {setState(() {isChecked[6] = value!;});}
+                              )
+                          )
+                      ),
+                    ],
+                  ),
+                  const Divider(color: Colors.black),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Rest (2 min)", style: TextStyle(fontSize: 40)),
+                      Transform.scale(
+                          scale: 1.5,
+                          child: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child:Checkbox(
+                                  value: isChecked[7],
+                                  onChanged: (bool? value) {setState(() {isChecked[7] = value!;});}
+                              )
+                          )
+                      ),
+                    ],
+                  ),
+                  const Divider(color: Colors.black),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Jumping Jacks (30 reps)", style: TextStyle(fontSize: 40)),
+                      Transform.scale(
+                          scale: 1.5,
+                          child: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child:Checkbox(
+                                  value: isChecked[8],
+                                  onChanged: (bool? value) {setState(() {isChecked[8] = value!;});}
+                              )
+                          )
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         )
       ][_newNdx]),
