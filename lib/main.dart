@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'homeScreen.dart';
+import 'home_screen.dart';
 import 'dietScreen.dart';
 import 'exerScreen.dart';
 
@@ -39,7 +39,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(child: _screens[_newNdx]),
+      body: Center(
+          child: <Widget>[
+        homeScreen,
+        dietScreen,
+        Column(
+          // TODO: Replace me
+          children: const <Widget>[
+            Text("Exercise Screen!"),
+          ],
+        )
+      ][_newNdx]),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _newNdx,
         items: const <BottomNavigationBarItem>[
@@ -59,5 +69,3 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 }
-
-List<Widget> get _screens => <Widget>[homeScreen, dietScreen, exerScreen];
