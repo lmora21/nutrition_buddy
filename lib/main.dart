@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Nutrition Buddy',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -31,6 +31,56 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class CalendarScreen extends StatefulWidget {
+  final String title;
+
+  const CalendarScreen({super.key, required this.title});
+
+  @override
+    State<CalendarScreen> createState() => _CalendarScreenState();
+}
+
+class _CalendarScreenState extends State<CalendarScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+          child: Column(
+            // TODO: Build calendar screen
+          )
+      )
+    );
+  }
+}
+
+class ExerInfoScreen extends StatefulWidget {
+  final String title;
+
+  const ExerInfoScreen({super.key, required this.title});
+
+  @override
+  State<ExerInfoScreen> createState() => _ExerInfoScreenState();
+}
+
+class _ExerInfoScreenState extends State<ExerInfoScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Center(
+            child: Column(
+              // TODO: Build exercise info screen
+            )
+        )
+    );
+  }
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -53,7 +103,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 alignment: Alignment.centerRight,
                 child: IconButton (
                     onPressed: (){
-                      // TODO: go to calender screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const CalendarScreen(title: 'Calendar',),
+                        )
+                      );
                     },
                     icon: const Icon(CupertinoIcons.calendar, size: 45),
                     padding: const EdgeInsets.all(0)
@@ -68,6 +123,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      IconButton (
+                          onPressed: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const ExerInfoScreen(title: 'Sit Ups',),
+                                )
+                            );
+                          },
+                          icon: const Icon(CupertinoIcons.info_circle, size: 45),
+                          padding: const EdgeInsets.all(0)
+                      ),
                       const Text("Sit Ups (20 reps)", style: TextStyle(fontSize: 40)),
                       Transform.scale(
                           scale: 1.5,
@@ -87,6 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      const SizedBox(width: 45),
                       const Text("Rest (2 minutes)", style: TextStyle(fontSize: 40)),
                       Transform.scale(
                           scale: 1.5,
@@ -103,6 +171,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      IconButton (
+                          onPressed: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const ExerInfoScreen(title: 'Push Ups',),
+                                )
+                            );
+                          },
+                          icon: const Icon(CupertinoIcons.info_circle, size: 45),
+                          padding: const EdgeInsets.all(0)
+                      ),
                       const Text("Push Ups (15 reps)", style: TextStyle(fontSize: 40)),
                       Transform.scale(
                           scale: 1.5,
@@ -119,6 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      const SizedBox(width: 45),
                       const Text("Rest (2 minutes)", style: TextStyle(fontSize: 40)),
                       Transform.scale(
                           scale: 1.5,
@@ -135,6 +216,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      IconButton (
+                          onPressed: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const ExerInfoScreen(title: 'Plank',),
+                                )
+                            );
+                          },
+                          icon: const Icon(CupertinoIcons.info_circle, size: 45),
+                          padding: const EdgeInsets.all(0)
+                      ),
                       const Text("Plank (1 minute)", style: TextStyle(fontSize: 40)),
                       Transform.scale(
                           scale: 1.5,
@@ -151,6 +244,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      const SizedBox(width: 45),
                       const Text("Rest (1 minute)", style: TextStyle(fontSize: 40)),
                       Transform.scale(
                           scale: 1.5,
@@ -167,6 +261,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      IconButton (
+                          onPressed: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const ExerInfoScreen(title: 'Pull Ups',),
+                                )
+                            );
+                          },
+                          icon: const Icon(CupertinoIcons.info_circle, size: 45),
+                          padding: const EdgeInsets.all(0)
+                      ),
                       const Text("Pull Ups (10 reps)", style: TextStyle(fontSize: 40)),
                       Transform.scale(
                           scale: 1.5,
@@ -183,6 +289,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      const SizedBox(width: 45),
                       const Text("Rest (2 min)", style: TextStyle(fontSize: 40)),
                       Transform.scale(
                           scale: 1.5,
@@ -199,6 +306,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      IconButton (
+                          onPressed: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const ExerInfoScreen(title: 'Jumping Jacks',),
+                                )
+                            );
+                          },
+                          icon: const Icon(CupertinoIcons.info_circle, size: 45),
+                          padding: const EdgeInsets.all(0)
+                      ),
                       const Text("Jumping Jacks (30 reps)", style: TextStyle(fontSize: 40)),
                       Transform.scale(
                           scale: 1.5,
@@ -222,8 +341,7 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.restaurant), label: "Diet"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.directions_run), label: "Exercise")
+          BottomNavigationBarItem(icon: Icon(Icons.directions_run), label: "Exercise")
         ],
         onTap: _onItemTap,
       ),
