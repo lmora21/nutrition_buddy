@@ -6,15 +6,19 @@ Column get dietScreen => Column(
   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
   children: <Widget>[
     // TODO: Fill in screen
-    // Padding(padding: EdgeInsets.only(top: 15.0)),
     Text("Grocery List", style: TextStyle(decoration: TextDecoration.underline, fontSize: 50)),
     for (var i = 0; i < GroceryList.prices.length; i++) ...[
       Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Text("\u2022", style: TextStyle(fontSize: 30),),
-        Text(GroceryList.food[i], style: TextStyle(fontSize: 30),),
-        Text("\$" "${GroceryList.prices[i]}", style: TextStyle(fontSize: 30),)
+        // Text("\u2022", style: TextStyle(fontSize: 30),),
+        Hero(tag: GroceryList.food[i], child:
+        IconButton(
+           icon: Icon(CupertinoIcons.info_circle, size: 20), onPressed: () {  },
+
+        )),
+        Text(GroceryList.food[i], style: TextStyle(fontSize: 25),),
+        Text("\$" "${GroceryList.prices[i]}", style: TextStyle(fontSize: 25),)
 
         // Text("\$" + "${GroceryList.prices[i]}", style: TextStyle(fontSize: 30),)
       ],),

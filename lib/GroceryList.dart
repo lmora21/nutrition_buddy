@@ -8,12 +8,10 @@ class GroceryList {
     "1 lb Sweet Potatoes",
     "2 cans Garbanzo Beans",
     "Turkey Burgers",
-    "Chicken Breasts",
-    "2 packs Spinach",
-    "1 lb Broccoli"
+    "Chicken Breasts"
   ];
 
   static List<int> prices = [
-    5, 3, 3, 5, 5, 7, 2, 7, 7, 6, 4
+    5, 3, 3, 5, 5, 7, 2, 7, 7
   ];
 }
