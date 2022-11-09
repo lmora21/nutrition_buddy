@@ -1,9 +1,33 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'GroceryList.dart';
 
-// Screen content for when Diet icon is pressed on bottom tab
 Column get dietScreen => Column(
-      children: const <Widget>[
-        // TODO: Fill in screen
-        Text("Diet Screen!"),
-      ],
-    );
+  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: <Widget>[
+    // TODO: Fill in screen
+    // Padding(padding: EdgeInsets.only(top: 15.0)),
+    Text("Grocery List", style: TextStyle(decoration: TextDecoration.underline, fontSize: 50)),
+    for (var i = 0; i < GroceryList.prices.length; i++) ...[
+      Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text("\u2022", style: TextStyle(fontSize: 30),),
+        Text(GroceryList.food[i], style: TextStyle(fontSize: 30),),
+        Text("\$" "${GroceryList.prices[i]}", style: TextStyle(fontSize: 30),)
+
+        // Text("\$" + "${GroceryList.prices[i]}", style: TextStyle(fontSize: 30),)
+      ],),
+     Divider(color: Colors.black, thickness: 1.0,),
+    ]
+    // Row(
+    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //   children: [
+    //     Text("\u2022", style: TextStyle(fontSize: 30),),
+    //     Text("2 Flour Tortilla", style: TextStyle(fontSize: 30),),
+    //     Text("\$5", style: TextStyle(fontSize: 30),)
+    //   ],
+    // ),
+    // const Divider(color: Colors.black),
+  ],
+);
