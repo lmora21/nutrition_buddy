@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               const Icon(CupertinoIcons.info_circle, size: 45),
                           padding: const EdgeInsets.all(0)),
                       const Text("Sit Ups (20 reps)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Align(
@@ -163,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       const SizedBox(width: 45),
                       const Text("Rest (2 minutes)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -195,7 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               const Icon(CupertinoIcons.info_circle, size: 45),
                           padding: const EdgeInsets.all(0)),
                       const Text("Push Ups (15 reps)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -215,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       const SizedBox(width: 45),
                       const Text("Rest (2 minutes)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -247,7 +247,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               const Icon(CupertinoIcons.info_circle, size: 45),
                           padding: const EdgeInsets.all(0)),
                       const Text("Plank (1 minute)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -267,7 +267,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       const SizedBox(width: 45),
                       const Text("Rest (1 minute)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -299,7 +299,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               const Icon(CupertinoIcons.info_circle, size: 45),
                           padding: const EdgeInsets.all(0)),
                       const Text("Pull Ups (10 reps)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -319,7 +319,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       const SizedBox(width: 45),
                       const Text("Rest (2 min)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -343,15 +343,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (_) => const ExerInfoScreen(
-                                    title: 'Jumping Jacks',
+                                    title: 'Burpees',
                                   ),
                                 ));
                           },
                           icon:
                               const Icon(CupertinoIcons.info_circle, size: 45),
                           padding: const EdgeInsets.all(0)),
-                      const Text("Jumping Jacks (30 reps)",
-                          style: TextStyle(fontSize: 40)),
+                      const Text("Burpees (20 reps)",
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
