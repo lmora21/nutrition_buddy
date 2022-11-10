@@ -9,8 +9,7 @@ class RouteCal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(title: const Text("Welcome to Calories & Nutrition Route!")),
+      appBar: AppBar(title: const Text("Calories & Nutrition")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

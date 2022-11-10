@@ -8,7 +8,7 @@ class RouteBudget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Welcome to Budget Route!")),
+      appBar: AppBar(title: const Text("Weekly Budget")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
