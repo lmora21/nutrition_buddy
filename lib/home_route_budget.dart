@@ -1,9 +1,11 @@
+import 'package:cs422_gr4_nutribuddy/Bar_Chart_Widget/bar_chart_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class RouteBudget extends StatelessWidget {
-  const RouteBudget({super.key, required this.pie});
+  const RouteBudget({super.key, required this.header});
 
-  final Widget pie;
+  final Widget header;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,18 @@ class RouteBudget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            pie,
+            // header,
+            Card(
+              color: Colors.blue.shade900,
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.only(top: 16),
+                child: SizedBox(height: 500, child: BarChartWidget()),
+              ),
+            ),
           ],
         ),
       ),

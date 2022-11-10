@@ -50,7 +50,7 @@ Widget getCustomCard(Widget icon, String title, dynamic ctx,
           if (isCal) {
             return RouteCal(pie: icon);
           } else {
-            return RouteBudget(pie: icon);
+            return RouteBudget(header: icon);
           }
         },
       ),
