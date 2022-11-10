@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'dietScreen.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 List<bool> isChecked = List<bool>.generate(9, (index) => false);
 
@@ -47,19 +48,25 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
+          title: const Text('Monthly Activity'),
         ),
         body: Center(
-            child: Column(
-                // TODO: Build calendar screen
-                )));
+          child: SfCalendar(
+              view: CalendarView.month,
+              showWeekNumber: true,
+              weekNumberStyle: const WeekNumberStyle(
+                backgroundColor: Color.fromARGB(255, 30, 142, 233),
+                textStyle: TextStyle(color: Colors.white, fontSize: 15),
+              )),
+        ));
   }
 }
 
 class ExerInfoScreen extends StatefulWidget {
   final String title;
+  final String desc;
 
-  const ExerInfoScreen({super.key, required this.title});
+  const ExerInfoScreen({super.key, required this.title, required this.desc});
 
   @override
   State<ExerInfoScreen> createState() => _ExerInfoScreenState();
@@ -74,8 +81,16 @@ class _ExerInfoScreenState extends State<ExerInfoScreen> {
         ),
         body: Center(
             child: Column(
-                // TODO: Build exercise info screen
-                )));
+              children: <Widget>[
+                Text(widget.title, style: const TextStyle(fontSize: 50)),
+                Stack(children: const <Widget>[
+                  Icon(CupertinoIcons.rectangle, size: 300),
+                  Icon(CupertinoIcons.play_arrow_solid, size: 300)
+                ]),
+                Expanded(child: ListView(children:[
+                      Text(widget.desc, style: const TextStyle(fontSize:16))
+                    ]))
+                ])));
   }
 }
 
@@ -90,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
           child: <Widget>[
         homeScreen(context),
-        dietScreen,
+        DietScreen(),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -127,6 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 MaterialPageRoute(
                                   builder: (_) => const ExerInfoScreen(
                                     title: 'Sit Ups',
+                                    desc: '1. Start by lying on your back with your knees bent. Sit ups work best if you do them on a soft surface, such as a mattress. Keep your knees bent at a 90-degree angle, with your feet flat on the floor.\n2. Put your fingertips on the back of your ears. Your elbows should be bent and pointing out at your sides. Cupping the back of your ears with your fingertips — as opposed to placing them on the back of your head — can help prevent you from pulling yourself up by your neck as you’re doing sit ups.\n3. Lift your torso up as close to your thighs as possible. Do this with a smooth, steady motion, keeping your feet flat on the floor. When you’re done lifting your torso, your lower back should be off the floor.\n4. Lower your torso down to the floor so you’re back in the starting position. Like you did when you lifted your torso up to your thighs, use a smooth and steady motion as you lower it down.'
                                   ),
                                 ));
                           },
@@ -134,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               const Icon(CupertinoIcons.info_circle, size: 45),
                           padding: const EdgeInsets.all(0)),
                       const Text("Sit Ups (20 reps)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Align(
@@ -157,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       const SizedBox(width: 45),
                       const Text("Rest (2 minutes)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -182,6 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 MaterialPageRoute(
                                   builder: (_) => const ExerInfoScreen(
                                     title: 'Push Ups',
+                                    desc: '1. Assume a face-down prone position on the floor. Keep your feet together. Your weight should be on your chest. Position hands palms-down on the floor, approximately shoulder width apart. They should be about next to your shoulders, with your elbows pointed towards your toes.\n2. Raise yourself using your arms. At this point, your weight should be supported by your hands and the balls of your feet. Make a straight line from your head to your heels, and contract your abdominals to keep your hips from sagging. This position is called a "plank," which is used for other various exercises. This is the beginning and the end position of a single push up.'
                                   ),
                                 ));
                           },
@@ -189,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               const Icon(CupertinoIcons.info_circle, size: 45),
                           padding: const EdgeInsets.all(0)),
                       const Text("Push Ups (15 reps)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -209,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       const SizedBox(width: 45),
                       const Text("Rest (2 minutes)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -234,6 +251,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 MaterialPageRoute(
                                   builder: (_) => const ExerInfoScreen(
                                     title: 'Plank',
+                                    desc: 'To do a traditional plank, lay on your stomach on the floor with your arms bent at the elbow so your hands are under your shoulders. Raise up slowly so that your arms are extended and you\'re on your toes (or your knees, if you\'re a beginner) with your legs and back straight. Hold the position for 5 to 10 seconds and gradually work up to 3 sets of 60 seconds each.'
                                   ),
                                 ));
                           },
@@ -241,7 +259,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               const Icon(CupertinoIcons.info_circle, size: 45),
                           padding: const EdgeInsets.all(0)),
                       const Text("Plank (1 minute)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -261,7 +279,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       const SizedBox(width: 45),
                       const Text("Rest (1 minute)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -286,6 +304,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 MaterialPageRoute(
                                   builder: (_) => const ExerInfoScreen(
                                     title: 'Pull Ups',
+                                    desc: '1. Grip a pullup bar with your palms facing whichever direction you prefer. In general, having your palms facing towards you is most efficient. When you pull yourself up with your hands facing this way, you give your biceps and lats a better workout. Pulling yourself up with your palms out is considered the most difficult way to pull up your bodyweight but also gives deltoids and triceps a good workout. Start with your arms fully extended.\n2. Pull your bodyweight up until your chin is just barely above the bar. You may have to strain, but keep pulling until you\'ve lifted yourself up using your back and biceps.\n3. Lower yourself until your arms are fully extended. Lower yourself in a controlled way to work the muscles harder and prep yourself for the next pull.'
                                   ),
                                 ));
                           },
@@ -293,7 +312,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               const Icon(CupertinoIcons.info_circle, size: 45),
                           padding: const EdgeInsets.all(0)),
                       const Text("Pull Ups (10 reps)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -313,7 +332,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       const SizedBox(width: 45),
                       const Text("Rest (2 min)",
-                          style: TextStyle(fontSize: 40)),
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
@@ -337,15 +356,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (_) => const ExerInfoScreen(
-                                    title: 'Jumping Jacks',
+                                    title: 'Burpees',
+                                    desc: '1. Stand with your feet shoulder-width apart. Hold your arms at your sides and stand with your knees straight. Also, make sure to tighten your abs, keep your back flat, and squeeze your buttocks at the start of each burpee.\n2.  Bend at your hips and knees to lower yourself into a squatting position. Hinge forward with your hips and bend your knees slightly to bring your body down lower to the floor. Keep your back straight and your arms in close to your body as you do this.\n3. Place your hands on the floor in front of you. Keep your hands close together so they are directly under your shoulders when you place them on the ground. Hold your arms out straight, but don\'t lock out your elbows.\n4. Kick your feet back so that you are in the plank position. Jump both feet back behind you at the same time and position them about shoulder-width apart. Keep your hands planted firmly on the ground to support your body as you do this.\n5. Drop all the way down to the floor. Once you are in the plank position, carefully lower your chest all the way down to the floor to do a pushup. Keep your hands flat on the floor with your elbows up in the air and your arms close to your body.\n6. Press up with your arms and jump your feet forward. Keep your hands flat on the ground and push off from the ground with your hand as you hinge forward at the hips and jump your feet towards your chest. Do this in 1 smooth motion.\n7. Jump straight upwards to finish the move. Once your feet are back under your upper body, jump straight up with your hands and arms raised over your head and then land in the standing position. You can jump as high as you are able, or just do a little hop in the air to finish the burpee.'
                                   ),
                                 ));
                           },
                           icon:
                               const Icon(CupertinoIcons.info_circle, size: 45),
                           padding: const EdgeInsets.all(0)),
-                      const Text("Jumping Jacks (30 reps)",
-                          style: TextStyle(fontSize: 40)),
+                      const Text("Burpees (20 reps)",
+                          style: TextStyle(fontSize: 30)),
                       Transform.scale(
                           scale: 1.5,
                           child: Padding(
