@@ -1,8 +1,9 @@
+import 'package:cs422_gr4_nutribuddy/dietEditScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'GroceryList.dart';
 import 'dietInfoScreen.dart';
-
+import 'dietEditScreen.dart';
 
 class DietScreen extends StatelessWidget {
   const DietScreen({super.key});
@@ -13,7 +14,15 @@ class DietScreen extends StatelessWidget {
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         // TODO: Fill in screen
-        Text("Grocery List", style: TextStyle(decoration: TextDecoration.underline, fontSize: 50)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("Grocery List", style: TextStyle(decoration: TextDecoration.underline, fontSize: 50)),
+            ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => DietEditScreen()));
+            }, child: Text("Edit")),
+          ],
+        ),
         for (var i = 0; i < GroceryList.prices.length; i++) ...[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
