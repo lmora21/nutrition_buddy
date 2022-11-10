@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'dietScreen.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 List<bool> isChecked = List<bool>.generate(9, (index) => false);
 
@@ -47,12 +48,17 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
+          title: const Text('Monthly Activity'),
         ),
         body: Center(
-            child: Column(
-                // TODO: Build calendar screen
-                )));
+          child: SfCalendar(
+              view: CalendarView.month,
+              showWeekNumber: true,
+              weekNumberStyle: const WeekNumberStyle(
+                backgroundColor: Color.fromARGB(255, 30, 142, 233),
+                textStyle: TextStyle(color: Colors.white, fontSize: 15),
+              )),
+        ));
   }
 }
 
