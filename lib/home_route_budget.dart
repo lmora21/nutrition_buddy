@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pie_chart/pie_chart.dart';
 
-class RouteCal extends StatelessWidget {
-  const RouteCal({super.key, required this.pie});
+class RouteBudget extends StatelessWidget {
+  const RouteBudget({super.key, required this.pie});
 
   final Widget pie;
 
@@ -15,10 +14,6 @@ class RouteCal extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             pie,
-            GestureDetector(
-              child: Image.asset("images/budget.png"),
-              onTap: () => Navigator.pop(context),
-            )
           ],
         ),
       ),

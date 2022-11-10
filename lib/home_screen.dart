@@ -1,3 +1,4 @@
+import 'package:cs422_gr4_nutribuddy/home_route_budget.dart';
 import 'package:cs422_gr4_nutribuddy/home_route_cal.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
@@ -12,7 +13,8 @@ Column homeScreen(context) {
         children: <Widget>[
           getCustomCard(graphStack, "Calories\n&\nNutrients", context),
           getCustomCard(
-              Image.asset("images/budget.png"), "Weekly\nBudget", context),
+              Image.asset("images/budget.png"), "Weekly\nBudget", context,
+              isCal: false),
         ],
       ),
     ],
@@ -20,7 +22,8 @@ Column homeScreen(context) {
 }
 
 // Create a consistent card for adding an item to the screen
-Widget getCustomCard(Widget icon, String title, dynamic ctx) {
+Widget getCustomCard(Widget icon, String title, dynamic ctx,
+    {bool isCal = true}) {
   return GestureDetector(
     child: Container(
       padding: const EdgeInsets.all(15),
@@ -31,9 +34,7 @@ Widget getCustomCard(Widget icon, String title, dynamic ctx) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: 150, child: icon),
-          const SizedBox(
-            width: 50,
-          ),
+          const SizedBox(width: 50),
           Text(
             title,
             textAlign: TextAlign.center,
@@ -46,7 +47,11 @@ Widget getCustomCard(Widget icon, String title, dynamic ctx) {
       ctx,
       MaterialPageRoute(
         builder: (context) {
-          return RouteCal(pie: icon);
+          if (isCal) {
+            return RouteCal(pie: icon);
+          } else {
+            return RouteBudget(pie: icon);
+          }
         },
       ),
     ),
