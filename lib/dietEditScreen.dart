@@ -43,37 +43,6 @@ class DietEditScreen extends StatelessWidget {
         primary: Colors.red,)), label: "")
     ],),
     );
-
-    // return Column(
-    //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //   children: <Widget>[
-    //     // TODO: Fill in screen
-    //     Row(
-    //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //       children: [
-    //         Text("Grocery List", style: TextStyle(decoration: TextDecoration.underline, fontSize: 50)),
-    //       ],
-    //     ),
-    //     for (var i = 0; i < GroceryList.prices.length; i++) ...[
-    //       Row(
-    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //         children: [
-    //           Hero(tag: GroceryList.food[i], child:
-    //           IconButton(
-    //             icon: Icon(CupertinoIcons.info_circle, size: 20), onPressed: () {
-    //             Navigator.push(context, MaterialPageRoute(builder: (context){
-    //               return DietInfoScreen(i);
-    //             }));
-    //           },
-    //
-    //           )),
-    //           Text(GroceryList.food[i], style: TextStyle(fontSize: 25),),
-    //           Text("\$" "${GroceryList.prices[i]}", style: TextStyle(fontSize: 25),)
-    //         ],),
-    //       Divider(color: Colors.black, thickness: 0.5),
-    //     ]
-    //   ],
-    // );
   }
 
 
