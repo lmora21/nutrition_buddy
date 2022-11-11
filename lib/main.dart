@@ -1,11 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:window_size/window_size.dart';
 import 'home_screen.dart';
 import 'dietScreen.dart';
 
 List<bool> isChecked = List<bool>.generate(9, (index) => false);
 
 void main() {
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    setWindowMaxSize(const Size(500, 800));
+    setWindowMinSize(const Size(500, 800));
+  }
   runApp(const MyApp());
 }
 
