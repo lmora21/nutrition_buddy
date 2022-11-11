@@ -15,17 +15,6 @@ Column homeScreen(context) {
           getCustomCard(
               Image.asset("images/budget.png"), "Weekly\nBudget", context,
               isCal: false),
-          Align(
-            alignment: Alignment.centerRight,
-            child: SizedBox(
-              height: 300,
-              child: FloatingActionButton(
-                onPressed: () => {},
-                tooltip: 'Add Widget Shortcut',
-                child: const Icon(Icons.add),
-              ),
-            ),
-          ),
         ],
       ),
     ],

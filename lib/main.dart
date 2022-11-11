@@ -388,6 +388,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
           onTap: _onItemTap,
         ),
+        floatingActionButton: FloatingActionButton(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          onPressed: () => {},
+          tooltip: 'Add Widget Shortcut',
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }
