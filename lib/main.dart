@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'dietScreen.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 List<bool> isChecked = List<bool>.generate(9, (index) => false);
 
@@ -32,34 +31,6 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class CalendarScreen extends StatefulWidget {
-  final String title;
-
-  const CalendarScreen({super.key, required this.title});
-
-  @override
-  State<CalendarScreen> createState() => _CalendarScreenState();
-}
-
-class _CalendarScreenState extends State<CalendarScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Monthly Activity'),
-        ),
-        body: Center(
-          child: SfCalendar(
-              view: CalendarView.month,
-              showWeekNumber: true,
-              weekNumberStyle: const WeekNumberStyle(
-                backgroundColor: Color.fromARGB(255, 30, 142, 233),
-                textStyle: TextStyle(color: Colors.white, fontSize: 15),
-              )),
-        ));
-  }
 }
 
 class ExerInfoScreen extends StatefulWidget {
@@ -122,20 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => const CalendarScreen(
-                                  title: 'Calendar',
-                                ),
-                              ));
-                        },
-                        icon: const Icon(CupertinoIcons.calendar, size: 45),
-                        padding: const EdgeInsets.all(0))),
                 const Text("Today's Workout",
                     style: TextStyle(
                         fontSize: 50, decoration: TextDecoration.underline)),
