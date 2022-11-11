@@ -83,12 +83,11 @@ class _ExerInfoScreenState extends State<ExerInfoScreen> {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _newNdx = 0;
+  bool isHome = true;
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return FractionallySizedBox(
-      widthFactor: screenWidth < 500 ? 1.0 : 500 / screenWidth,
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
         ),
@@ -261,17 +260,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           const Text("Rest (1 minute)",
                               style: TextStyle(fontSize: 30)),
                           Transform.scale(
-                              scale: 1.5,
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                  child: Checkbox(
-                                      value: isChecked[5],
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          isChecked[5] = value!;
-                                        });
-                                      }))),
+                            scale: 1.5,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child: Checkbox(
+                                value: isChecked[5],
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked[5] = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       const Divider(color: Colors.black),
@@ -281,13 +282,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           IconButton(
                               onPressed: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => const ExerInfoScreen(
-                                          title: 'Pull Ups',
-                                          desc:
-                                              '1. Grip a pullup bar with your palms facing whichever direction you prefer. In general, having your palms facing towards you is most efficient. When you pull yourself up with your hands facing this way, you give your biceps and lats a better workout. Pulling yourself up with your palms out is considered the most difficult way to pull up your bodyweight but also gives deltoids and triceps a good workout. Start with your arms fully extended.\n2. Pull your bodyweight up until your chin is just barely above the bar. You may have to strain, but keep pulling until you\'ve lifted yourself up using your back and biceps.\n3. Lower yourself until your arms are fully extended. Lower yourself in a controlled way to work the muscles harder and prep yourself for the next pull.'),
-                                    ));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const ExerInfoScreen(
+                                        title: 'Pull Ups',
+                                        desc:
+                                            '1. Grip a pullup bar with your palms facing whichever direction you prefer. In general, having your palms facing towards you is most efficient. When you pull yourself up with your hands facing this way, you give your biceps and lats a better workout. Pulling yourself up with your palms out is considered the most difficult way to pull up your bodyweight but also gives deltoids and triceps a good workout. Start with your arms fully extended.\n2. Pull your bodyweight up until your chin is just barely above the bar. You may have to strain, but keep pulling until you\'ve lifted yourself up using your back and biceps.\n3. Lower yourself until your arms are fully extended. Lower yourself in a controlled way to work the muscles harder and prep yourself for the next pull.'),
+                                  ),
+                                );
                               },
                               icon: const Icon(CupertinoIcons.info_circle,
                                   size: 45),
@@ -295,17 +297,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           const Text("Pull Ups (10 reps)",
                               style: TextStyle(fontSize: 30)),
                           Transform.scale(
-                              scale: 1.5,
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                  child: Checkbox(
-                                      value: isChecked[6],
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          isChecked[6] = value!;
-                                        });
-                                      }))),
+                            scale: 1.5,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child: Checkbox(
+                                value: isChecked[6],
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked[6] = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       const Divider(color: Colors.black),
@@ -388,20 +392,31 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
           onTap: _onItemTap,
         ),
-        floatingActionButton: FloatingActionButton(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          onPressed: () => {},
-          tooltip: 'Add Widget Shortcut',
-          child: const Icon(Icons.add),
-        ),
-      ),
-    );
+        floatingActionButton: getFloater(isHome));
   }
 
   void _onItemTap(int ndx) {
+    bool newState;
+    if (ndx == 0) {
+      newState = true;
+    } else {
+      newState = false;
+    }
     setState(() {
       _newNdx = ndx;
+      isHome = newState;
     });
+  }
+
+  Widget getFloater(bool isHome) {
+    if (isHome) {
+      return FloatingActionButton(
+        onPressed: () => {},
+        tooltip: 'Add Widget Shortcut',
+        child: const Icon(Icons.add),
+      );
+    } else {
+      return const SizedBox();
+    }
   }
 }
