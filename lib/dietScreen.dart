@@ -12,10 +12,10 @@ class DietScreen extends StatelessWidget {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        // TODO: Fill in screen
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            const SizedBox(width: 25),
             const Text("Grocery List", style: TextStyle(decoration: TextDecoration.underline, fontSize: 50)),
             ElevatedButton(onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const DietEditScreen()));

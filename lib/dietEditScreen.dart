@@ -16,7 +16,7 @@ class DietEditScreen extends StatelessWidget {
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             Text("Grocery List", style: TextStyle(decoration: TextDecoration.underline, fontSize: 50)),
           ],
@@ -26,12 +26,12 @@ class DietEditScreen extends StatelessWidget {
             children: [for (var i = 0; i < GroceryList.prices.length; i++) ...[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
             children: [
-              Text(GroceryList.food[i], style: const TextStyle(fontSize: 25),),
-              Text("\$" "${GroceryList.prices[i]}", style: const TextStyle(fontSize: 25),),
+              Text(GroceryList.food[i] + " (\$" +  "${GroceryList.prices[i]})", style: const TextStyle(fontSize: 25),),
+              Row(children: [
               IconButton(onPressed: () {}, icon: const Icon(Icons.create_outlined)),
               IconButton(onPressed: () {}, icon: const Icon(CupertinoIcons.trash)),
+              ])
             ],),
           const Divider(color: Colors.black, thickness: 0.5),
         ]]))
