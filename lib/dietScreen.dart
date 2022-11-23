@@ -30,7 +30,7 @@ class DietScreen extends StatelessWidget {
             children: [
               Hero(tag: GroceryList.food[i], child:
               IconButton(
-                icon: const Icon(CupertinoIcons.info_circle, size: 45), onPressed: () {
+                icon: const Icon(CupertinoIcons.info_circle, size: 40), onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context){
                   return DietInfoScreen(i);
                 }));
@@ -38,7 +38,7 @@ class DietScreen extends StatelessWidget {
 
               )),
               Text(GroceryList.food[i], style: const TextStyle(fontSize: 25),),
-              Text("\$" "${GroceryList.prices[i]}", style: const TextStyle(fontSize: 25),)
+              Text("\$" "${GroceryList.prices[i]}" ".00", style: const TextStyle(fontSize: 25),)
             ],),
           const Divider(color: Colors.black, thickness: 0.5),
             ]]))
