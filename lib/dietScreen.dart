@@ -16,10 +16,10 @@ class DietScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const SizedBox(width: 25),
-            const Text("Grocery List", style: TextStyle(decoration: TextDecoration.underline, fontSize: 50)),
-            ElevatedButton(onPressed: () {
+            const Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0), child: Text("Grocery List", style: TextStyle(decoration: TextDecoration.underline, fontSize: 50))),
+            Padding(padding: const EdgeInsets.fromLTRB(0, 20, 0, 0), child: ElevatedButton(onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const DietEditScreen()));
-            }, child: const Text("Edit")),
+            }, child: const Text("Edit"))),
           ],
         ),
         Expanded(
@@ -40,7 +40,7 @@ class DietScreen extends StatelessWidget {
               Text(GroceryList.food[i], style: const TextStyle(fontSize: 25),),
               Text("\$" "${GroceryList.prices[i]}" ".00", style: const TextStyle(fontSize: 25),)
             ],),
-          const Divider(color: Colors.black, thickness: 0.5),
+          const Divider(color: Colors.black),
             ]]))
       ],
     );

@@ -101,9 +101,9 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const Text("Today's Workout",
+                const Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0), child: Text("Today's Workout",
                     style: TextStyle(
-                        fontSize: 50, decoration: TextDecoration.underline)),
+                        fontSize: 50, decoration: TextDecoration.underline))),
                 const SizedBox(height: 20),
                 Expanded(
                   child: ListView(
@@ -397,6 +397,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ],
                       ),
+                      const Divider(color: Colors.black),
                     ],
                   ),
                 ),
