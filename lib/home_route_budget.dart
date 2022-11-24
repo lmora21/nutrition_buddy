@@ -1,7 +1,8 @@
-import 'package:cs422_gr4_nutribuddy/charts_flutter_remake/BarChartData.dart';
+import 'package:cs422_gr4_nutribuddy/charts_flutter_remake/bar_chart_data.dart';
 import 'package:cs422_gr4_nutribuddy/charts_flutter_remake/bar_chart_model.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class RouteBudget extends StatelessWidget {
   const RouteBudget({super.key, required this.header});
@@ -44,12 +45,15 @@ class RouteBudget extends StatelessWidget {
   }
 }
 
-charts.NumericAxisSpec get coloredYAxis => const charts.NumericAxisSpec(
-      renderSpec: charts.GridlineRendererSpec(
+charts.NumericAxisSpec get coloredYAxis => charts.NumericAxisSpec(
+      renderSpec: const charts.GridlineRendererSpec(
         labelStyle: charts.TextStyleSpec(
-          fontSize: 10,
+          fontSize: 15,
           color: charts.MaterialPalette.white,
         ),
+      ),
+      tickFormatterSpec: charts.BasicNumericTickFormatterSpec.fromNumberFormat(
+        NumberFormat.compactSimpleCurrency(),
       ),
     );
 
