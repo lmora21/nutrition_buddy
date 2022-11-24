@@ -26,7 +26,7 @@ class RouteBudget extends StatelessWidget {
       body: Center(
         child: Container(
           padding: const EdgeInsets.fromLTRB(10, 10, 0, 20),
-          color: Colors.indigo.shade800,
+          color: Color.fromARGB(255, 15, 21, 57),
           height: double.infinity,
           child:
               // header,

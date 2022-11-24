@@ -46,7 +46,11 @@ class ExerInfoScreen extends StatefulWidget {
   final String desc;
   final String image;
 
-  const ExerInfoScreen({super.key, required this.title, required this.desc, required this.image});
+  const ExerInfoScreen(
+      {super.key,
+      required this.title,
+      required this.desc,
+      required this.image});
 
   @override
   State<ExerInfoScreen> createState() => _ExerInfoScreenState();
@@ -63,11 +67,14 @@ class _ExerInfoScreenState extends State<ExerInfoScreen> {
         child: Column(
           children: <Widget>[
             Text(widget.title, style: const TextStyle(fontSize: 50)),
-            Image.asset("images/" + widget.image, width:400, height:400),
+            Image.asset("images/" + widget.image, width: 400, height: 400),
             Expanded(
               child: ListView(
                 children: [
-                  Padding(padding: const EdgeInsets.fromLTRB(20, 0, 20, 20), child:Text(widget.desc, style: const TextStyle(fontSize: 16, height:2.0)))
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                      child: Text(widget.desc,
+                          style: const TextStyle(fontSize: 16, height: 2.0)))
                 ],
               ),
             ),
@@ -85,9 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
         body: Center(
           child: <Widget>[
             homeScreen(context),
