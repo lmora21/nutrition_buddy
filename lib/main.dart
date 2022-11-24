@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Nutrition Buddy'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -114,14 +115,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           IconButton(
                               onPressed: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => const ExerInfoScreen(
-                                          title: 'Sit Ups',
-                                          desc:
-                                              '1. Start by lying on your back with your knees bent. Sit ups work best if you do them on a soft surface, such as a mattress. Keep your knees bent at a 90-degree angle, with your feet flat on the floor.\n\n2. Put your fingertips on the back of your ears. Your elbows should be bent and pointing out at your sides. Cupping the back of your ears with your fingertips — as opposed to placing them on the back of your head — can help prevent you from pulling yourself up by your neck as you’re doing sit ups.\n\n3. Lift your torso up as close to your thighs as possible. Do this with a smooth, steady motion, keeping your feet flat on the floor. When you’re done lifting your torso, your lower back should be off the floor.\n\n4. Lower your torso down to the floor so you’re back in the starting position. Like you did when you lifted your torso up to your thighs, use a smooth and steady motion as you lower it down.',
-                                          image: 'situps.gif'),
-                                    ));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const ExerInfoScreen(
+                                        title: 'Sit Ups',
+                                        desc:
+                                            '1. Start by lying on your back with your knees bent. Sit ups work best if you do them on a soft surface, such as a mattress. Keep your knees bent at a 90-degree angle, with your feet flat on the floor.\n\n2. Put your fingertips on the back of your ears. Your elbows should be bent and pointing out at your sides. Cupping the back of your ears with your fingertips — as opposed to placing them on the back of your head — can help prevent you from pulling yourself up by your neck as you’re doing sit ups.\n\n3. Lift your torso up as close to your thighs as possible. Do this with a smooth, steady motion, keeping your feet flat on the floor. When you’re done lifting your torso, your lower back should be off the floor.\n\n4. Lower your torso down to the floor so you’re back in the starting position. Like you did when you lifted your torso up to your thighs, use a smooth and steady motion as you lower it down.',
+                                        image: 'situps.gif'),
+                                  ),
+                                );
                               },
                               icon: const Icon(CupertinoIcons.info_circle,
                                   size: 45),
@@ -129,19 +131,22 @@ class _MyHomePageState extends State<MyHomePage> {
                           const Text("Sit Ups (20 reps)",
                               style: TextStyle(fontSize: 30)),
                           Transform.scale(
-                              scale: 1.5,
-                              child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          0, 0, 10, 0),
-                                      child: Checkbox(
-                                          value: isChecked[0],
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              isChecked[0] = value!;
-                                            });
-                                          })))),
+                            scale: 1.5,
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                child: Checkbox(
+                                  value: isChecked[0],
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isChecked[0] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       const Divider(color: Colors.black),
@@ -152,17 +157,21 @@ class _MyHomePageState extends State<MyHomePage> {
                           const Text("Rest (2 minutes)",
                               style: TextStyle(fontSize: 30)),
                           Transform.scale(
-                              scale: 1.5,
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                  child: Checkbox(
-                                      value: isChecked[1],
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          isChecked[1] = value!;
-                                        });
-                                      }))),
+                            scale: 1.5,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child: Checkbox(
+                                value: isChecked[1],
+                                onChanged: (bool? value) {
+                                  setState(
+                                    () {
+                                      isChecked[1] = value!;
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       const Divider(color: Colors.black),
@@ -172,14 +181,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           IconButton(
                               onPressed: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => const ExerInfoScreen(
-                                          title: 'Push Ups',
-                                          desc:
-                                              '1. Assume a face-down prone position on the floor. Keep your feet together. Your weight should be on your chest. Position hands palms-down on the floor, approximately shoulder width apart. They should be about next to your shoulders, with your elbows pointed towards your toes.\n\n2. Raise yourself using your arms. At this point, your weight should be supported by your hands and the balls of your feet. Make a straight line from your head to your heels, and contract your abdominals to keep your hips from sagging. This position is called a "plank," which is used for other various exercises. This is the beginning and the end position of a single push up.',
-                                          image: 'pushups.gif'),
-                                    ));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const ExerInfoScreen(
+                                        title: 'Push Ups',
+                                        desc:
+                                            '1. Assume a face-down prone position on the floor. Keep your feet together. Your weight should be on your chest. Position hands palms-down on the floor, approximately shoulder width apart. They should be about next to your shoulders, with your elbows pointed towards your toes.\n\n2. Raise yourself using your arms. At this point, your weight should be supported by your hands and the balls of your feet. Make a straight line from your head to your heels, and contract your abdominals to keep your hips from sagging. This position is called a "plank," which is used for other various exercises. This is the beginning and the end position of a single push up.',
+                                        image: 'pushups.gif'),
+                                  ),
+                                );
                               },
                               icon: const Icon(CupertinoIcons.info_circle,
                                   size: 45),
@@ -187,17 +197,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           const Text("Push Ups (15 reps)",
                               style: TextStyle(fontSize: 30)),
                           Transform.scale(
-                              scale: 1.5,
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                  child: Checkbox(
-                                      value: isChecked[2],
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          isChecked[2] = value!;
-                                        });
-                                      }))),
+                            scale: 1.5,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child: Checkbox(
+                                value: isChecked[2],
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked[2] = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       const Divider(color: Colors.black),
@@ -208,17 +220,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           const Text("Rest (2 minutes)",
                               style: TextStyle(fontSize: 30)),
                           Transform.scale(
-                              scale: 1.5,
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                  child: Checkbox(
-                                      value: isChecked[3],
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          isChecked[3] = value!;
-                                        });
-                                      }))),
+                            scale: 1.5,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child: Checkbox(
+                                value: isChecked[3],
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked[3] = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       const Divider(color: Colors.black),
@@ -228,14 +242,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           IconButton(
                               onPressed: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => const ExerInfoScreen(
-                                          title: 'Plank',
-                                          desc:
-                                              'To do a traditional plank, lay on your stomach on the floor with your arms bent at the elbow so your hands are under your shoulders. Raise up slowly so that your arms are extended and you\'re on your toes (or your knees, if you\'re a beginner) with your legs and back straight. Hold the position for 5 to 10 seconds and gradually work up to 3 sets of 60 seconds each.',
-                                          image: 'plank.jpg'),
-                                    ));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const ExerInfoScreen(
+                                        title: 'Plank',
+                                        desc:
+                                            'To do a traditional plank, lay on your stomach on the floor with your arms bent at the elbow so your hands are under your shoulders. Raise up slowly so that your arms are extended and you\'re on your toes (or your knees, if you\'re a beginner) with your legs and back straight. Hold the position for 5 to 10 seconds and gradually work up to 3 sets of 60 seconds each.',
+                                        image: 'plank.jpg'),
+                                  ),
+                                );
                               },
                               icon: const Icon(CupertinoIcons.info_circle,
                                   size: 45),
@@ -243,17 +258,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           const Text("Plank (1 minute)",
                               style: TextStyle(fontSize: 30)),
                           Transform.scale(
-                              scale: 1.5,
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                  child: Checkbox(
-                                      value: isChecked[4],
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          isChecked[4] = value!;
-                                        });
-                                      }))),
+                            scale: 1.5,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child: Checkbox(
+                                value: isChecked[4],
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked[4] = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       const Divider(color: Colors.black),
