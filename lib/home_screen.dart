@@ -5,56 +5,69 @@ import 'package:pie_chart/pie_chart.dart';
 
 // Screen content for when home icon is pressed on bottom tab
 Column homeScreen(context) {
+  // Create a consistent card for adding an item to the screen
+  Widget getCustomCard(Widget icon, String title, {bool isCal = true}) {
+    return GestureDetector(
+      child: Container(
+          // padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+              color: Colors.blue.withOpacity(0.8),
+              borderRadius: const BorderRadius.all(Radius.circular(20))),
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Flexible(
+                  flex: 1,
+                  child: SizedBox(
+                      height: 180, width: double.infinity, child: icon),
+                ),
+                Flexible(
+                  flex: 2,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          fontSize: 35, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )),
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            if (isCal) {
+              return RouteCal(pie: icon);
+            } else {
+              return RouteBudget(header: icon);
+            }
+          },
+        ),
+      ),
+    );
+  }
+
+  double spacing = 25;
   return Column(
     mainAxisSize: MainAxisSize.max,
     children: <Widget>[
-      Wrap(
-        runSpacing: 10,
-        children: <Widget>[
-          getCustomCard(graphStack, "Calories\n&\nNutrients", context),
-          getCustomCard(
-              Image.asset("images/budget.png"), "Weekly\nBudget", context,
-              isCal: false),
-        ],
-      ),
+      Padding(
+          padding: EdgeInsets.fromLTRB(0, spacing, 0, spacing),
+          child: Wrap(
+            runSpacing: spacing,
+            children: <Widget>[
+              getCustomCard(graphStack, "Calories\n&\nNutrients"),
+              getCustomCard(Image.asset("images/budget.png"), "Weekly\nBudget",
+                  isCal: false),
+            ],
+          )),
     ],
-  );
-}
-
-// Create a consistent card for adding an item to the screen
-Widget getCustomCard(Widget icon, String title, dynamic ctx,
-    {bool isCal = true}) {
-  return GestureDetector(
-    child: Container(
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-          color: Colors.blue.withOpacity(0.8),
-          borderRadius: const BorderRadius.all(Radius.circular(20))),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(height: 150, child: icon),
-          const SizedBox(width: 50),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-          )
-        ],
-      ),
-    ),
-    onTap: () => Navigator.push(
-      ctx,
-      MaterialPageRoute(
-        builder: (context) {
-          if (isCal) {
-            return RouteCal(pie: icon);
-          } else {
-            return RouteBudget(header: icon);
-          }
-        },
-      ),
-    ),
   );
 }
 
