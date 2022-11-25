@@ -4,8 +4,19 @@ import 'package:flutter/material.dart';
 import 'GroceryList.dart';
 import 'dietInfoScreen.dart';
 
-class DietScreen extends StatelessWidget {
+List<bool> isChecked = List<bool>.generate(9, (index) => false);
+
+class DietScreen extends StatefulWidget {
   const DietScreen({super.key});
+
+  //final String title;
+
+  @override
+  State<DietScreen> createState() => _DietScreen();
+}
+
+class _DietScreen extends State<DietScreen> {
+  //const DietScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +41,7 @@ class DietScreen extends StatelessWidget {
             children: [
               Hero(tag: GroceryList.food[i], child:
               IconButton(
-                icon: const Icon(CupertinoIcons.info_circle, size: 40), onPressed: () {
+                icon: const Icon(Icons.info_outline, size: 45), onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context){
                   return DietInfoScreen(i);
                 }));
@@ -38,7 +49,17 @@ class DietScreen extends StatelessWidget {
 
               )),
               Text(GroceryList.food[i], style: const TextStyle(fontSize: 25),),
-              Text("\$" "${GroceryList.prices[i]}" ".00", style: const TextStyle(fontSize: 25),)
+              Row(children: [
+              Text("\$" "${GroceryList.prices[i]}" ".00", style: const TextStyle(fontSize: 25),),
+              Checkbox(
+                      value: isChecked[i],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isChecked[i] = value!;
+                        });
+                      },
+                    ),
+              ])
             ],),
           const Divider(color: Colors.black),
             ]]))

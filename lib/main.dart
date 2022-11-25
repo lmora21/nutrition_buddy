@@ -198,7 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: <Widget>[
           homeScreen(context),
-          const DietScreen(),
+          DietScreen(),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
