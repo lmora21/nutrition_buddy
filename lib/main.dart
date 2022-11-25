@@ -68,7 +68,7 @@ class _ExerInfoScreenState extends State<ExerInfoScreen> {
         child: Column(
           children: <Widget>[
             Text(widget.title, style: const TextStyle(fontSize: 50)),
-            Image.asset("images/" + widget.image, width: 400, height: 400),
+            Image.asset("images/${widget.image}", width: 400, height: 400),
             Expanded(
               child: ListView(
                 children: [
@@ -101,9 +101,12 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0), child: Text("Today's Workout",
-                    style: TextStyle(
-                        fontSize: 50, decoration: TextDecoration.underline))),
+                const Padding(
+                    padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    child: Text("Today's Workout",
+                        style: TextStyle(
+                            fontSize: 50,
+                            decoration: TextDecoration.underline))),
                 const SizedBox(height: 20),
                 Expanded(
                   child: ListView(

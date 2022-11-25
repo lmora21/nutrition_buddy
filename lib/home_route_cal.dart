@@ -43,57 +43,99 @@ class RouteCal extends StatelessWidget {
             animationDuration: 800,
             percent: percent <= 1.0 ? percent : 1.0,
             barRadius: const Radius.circular(20),
-            // progressColor: percent < 0.25
-            //     ? Colors.red
-            //     : percent < 0.5
-            //         ? Colors.orange
-            //         : percent < 0.75
-            //             ? Colors.yellow
-            //             : Colors.green,
-            center: Text("$percentString%"),
-            linearGradient: const LinearGradient(colors: [
-              Colors.red,
-              Colors.yellow,
-              Colors.lightGreen,
-              Colors.green
-            ]),
+            progressColor: percent < 0.2
+                ? Colors.red
+                : percent < 0.4
+                    ? Colors.orange
+                    : percent < 0.6
+                        ? Colors.yellow
+                        : percent < 0.8
+                            ? Colors.lightGreen
+                            : percent < 1.0
+                                ? Colors.green
+                                : Colors.pink.shade100,
+            center: Text(
+              "$percentString%",
+              style: TextStyle(
+                  color: percent < 1.0 ? Colors.black : Colors.red.shade800),
+            ),
             clipLinearGradient: true,
           ),
+          indentedDivider(),
         ],
       );
     }
 
     return Scaffold(
       appBar: AppBar(title: const Text("Calories & Nutrition")),
-      body: Center(
-        child: ListView(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Wrap(
-                  runSpacing: 20,
-                  children: <Widget>[
-                    pie,
-                    coolBar("Protein", 40, 80),
-                    coolBar("Carbohydrates", 12, 260),
-                    coolBar("Fiber", 220, 230),
-                    coolBar("Sugars", 33, 60),
-                    coolBar("Fat", 200, 60),
-                    coolBar("Saturated", 10, 25),
-                    coolBar("Cholesterol", 200, 300),
-                    coolBar("Sodium", 1.1, 2.3),
-                    coolBar("Potassium", 1.1, 3.5),
-                    coolBar("Vitamin A", 80, 100),
-                    coolBar("Vitamin C", 32, 100),
-                    coolBar("Iron", 50, 100),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Wrap(
+                alignment: WrapAlignment.center,
+                runSpacing: 5,
+                children: <Widget>[
+                  textTitle("Daily Calories"),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    child: Wrap(
+                        alignment: WrapAlignment.center,
+                        runSpacing: 20,
+                        children: [
+                          pie,
+                          Text(
+                              "${dmap.values.first.round()} of ${(dmap.values.first + dmap.values.last).round()} Calories",
+                              style: const TextStyle(fontSize: 18)),
+                        ]),
+                  ),
+                  textTitle("Nutrients"),
+                  coolBar("Protein", 40, 80),
+                  coolBar("Carbohydrates", 12, 260),
+                  coolBar("Fiber", 220, 230),
+                  coolBar("Sugars", 33, 60),
+                  coolBar("Fat", 200, 60),
+                  coolBar("Saturated", 13, 25),
+                  coolBar("Cholesterol", 235, 300),
+                  coolBar("Sodium", 1.1, 2.3),
+                  coolBar("Potassium", .7, 3.5),
+                  coolBar("Vitamin A", 78, 100),
+                  coolBar("Vitamin C", 32, 100),
+                  coolBar("Iron", 50, 100),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
+}
+
+// Map the pie chart is based on
+const Map<String, double> dmap = {
+  "consumed": 1200,
+  "unused": 1000,
+};
+
+Widget indentedDivider() {
+  return const Divider(
+      color: Colors.black12, endIndent: 30, indent: 30, thickness: 2);
+}
+
+Widget textTitle(String title) {
+  return Container(
+    alignment: Alignment.center,
+    width: double.infinity,
+    decoration: const BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(60))),
+    child: Padding(
+      padding: const EdgeInsets.all(20),
+      child: Text(title,
+          style: const TextStyle(
+              fontSize: 35, fontWeight: FontWeight.bold, color: Colors.white)),
+    ),
+  );
 }

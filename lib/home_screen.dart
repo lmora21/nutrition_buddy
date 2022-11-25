@@ -79,9 +79,3 @@ Widget get graphStack => Stack(
         ),
       ],
     );
-
-// Map the pie chart is based on
-const Map<String, double> dmap = {
-  "consumed": 8,
-  "unused": 2,
-};
