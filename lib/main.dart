@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:cs422_gr4_nutribuddy/home_route_cal.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:window_size/window_size.dart';
@@ -103,19 +102,27 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(CupertinoIcons.info_circle, size: 45),
-                    padding: const EdgeInsets.all(0)),
-                Text("$title $hint", style: const TextStyle(fontSize: 30)),
-                Transform.scale(
-                  scale: 1.5,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                // Icon
+                const Expanded(
+                    flex: 1, child: Icon(Icons.info_outline, size: 45)),
+                // Title
+                Expanded(
+                    flex: 4,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "$title $hint",
+                        style: const TextStyle(fontSize: 30),
+                      ),
+                    )),
+                // Checkbox
+                Expanded(
+                  flex: 1,
+                  child: Transform.scale(
+                    scale: 1.5,
+                    child: Align(
                       child: Checkbox(
                         value: isChecked[index],
                         onChanged: (bool? value) {
@@ -126,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                ),
+                )
               ],
             ),
             indentedDivider(),
@@ -148,15 +155,26 @@ class _MyHomePageState extends State<MyHomePage> {
       return Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(width: 45),
-              Text("Rest (${minutes == 1 ? "1 minute" : "$minutes minutes"})",
-                  style: const TextStyle(fontSize: 30)),
-              Transform.scale(
-                scale: 1.5,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+              // Empty left space
+              const Expanded(
+                flex: 1,
+                child: SizedBox(),
+              ),
+              // Title
+              Expanded(
+                flex: 4,
+                child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                        "Rest (${minutes == 1 ? "1 minute" : "$minutes minutes"})",
+                        style: const TextStyle(fontSize: 30))),
+              ),
+              // Checkbox
+              Expanded(
+                flex: 1,
+                child: Transform.scale(
+                  scale: 1.5,
                   child: Checkbox(
                     value: isChecked[index],
                     onChanged: (bool? value) {
