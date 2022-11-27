@@ -1,37 +1,42 @@
 import 'package:cs422_gr4_nutribuddy/home_route_budget.dart';
 import 'package:cs422_gr4_nutribuddy/home_route_cal.dart';
+import 'package:cs422_gr4_nutribuddy/home_route_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 // Screen content for when home icon is pressed on bottom tab
 Column homeScreen(context) {
   // Create a consistent card for adding an item to the screen
-  Widget getCustomCard(Widget icon, String title, {bool isCal = true}) {
+  Widget getCustomCard(Widget icon, String title, {required index}) {
     return GestureDetector(
       child: Container(
           // padding: const EdgeInsets.all(15),
-          decoration: BoxDecoration(
-              color: Colors.blue.withOpacity(0.8),
-              borderRadius: const BorderRadius.all(Radius.circular(20))),
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.blue, Colors.cyan],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(20))),
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Flexible(
+                Expanded(
                   flex: 1,
-                  child: SizedBox(
-                      height: 180, width: double.infinity, child: icon),
+                  child: SizedBox(height: 160, child: icon),
                 ),
-                Flexible(
+                Expanded(
                   flex: 2,
                   child: SizedBox(
-                    width: double.infinity,
                     child: Text(
                       title,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 35, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: Colors.blue.shade900,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -42,10 +47,15 @@ Column homeScreen(context) {
         context,
         MaterialPageRoute(
           builder: (context) {
-            if (isCal) {
-              return RouteCal(pie: icon);
-            } else {
-              return RouteBudget(header: icon);
+            switch (index) {
+              case 0:
+                return RouteCal(pie: icon);
+              case 1:
+                return const RouteBudget();
+              case 2:
+                return const RouteAppSettings();
+              default:
+                return const FlutterLogo();
             }
           },
         ),
@@ -53,7 +63,7 @@ Column homeScreen(context) {
     );
   }
 
-  double spacing = 25;
+  double spacing = 20;
   return Column(
     mainAxisSize: MainAxisSize.max,
     children: <Widget>[
@@ -62,9 +72,17 @@ Column homeScreen(context) {
           child: Wrap(
             runSpacing: spacing,
             children: <Widget>[
-              getCustomCard(graphStack, "Calories\n&\nNutrients"),
+              getCustomCard(graphStack, "Calories\n&\nNutrients", index: 0),
               getCustomCard(Image.asset("images/budget.png"), "Weekly\nBudget",
-                  isCal: false),
+                  index: 1),
+              getCustomCard(
+                  Icon(
+                    Icons.settings,
+                    size: 140,
+                    color: Colors.blue.shade800,
+                  ),
+                  "Settings\n&\nPreferences",
+                  index: 2),
             ],
           )),
     ],

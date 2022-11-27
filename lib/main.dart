@@ -27,7 +27,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nutrition Buddy',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.blue.shade800,
+        colorScheme: ColorScheme(
+          primary: Colors.blue.shade800,
+          brightness: Brightness.dark,
+          onPrimary: Colors.white,
+          secondary: Colors.blue.shade800,
+          onSecondary: Colors.black,
+          error: Colors.pink,
+          onError: Colors.black,
+          background: Colors.black,
+          onBackground: Colors.black,
+          surface: Colors.blue.shade800,
+          onSurface: Colors.white,
+        ),
       ),
       home: const MyHomePage(title: 'Nutrition Buddy'),
       debugShowCheckedModeBanner: false,
@@ -264,15 +277,35 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ][_newNdx],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _newNdx,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.restaurant), label: "Diet"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.directions_run), label: "Exercise")
-        ],
-        onTap: _onItemTap,
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(60)),
+        child: Stack(
+          children: [
+            Container(
+              height: 60,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.blue, Colors.cyan],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+            ),
+            BottomNavigationBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              currentIndex: _newNdx,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.restaurant), label: "Diet"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.directions_run), label: "Exercise")
+              ],
+              onTap: _onItemTap,
+            ),
+          ],
+        ),
       ),
     );
   }

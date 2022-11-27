@@ -121,16 +121,16 @@ const Map<String, double> dmap = {
 
 Widget indentedDivider() {
   return const Divider(
-      color: Colors.black12, endIndent: 30, indent: 30, thickness: 2);
+      color: Colors.white12, endIndent: 30, indent: 30, thickness: 2);
 }
 
 Widget textTitle(String title) {
   return Container(
     alignment: Alignment.center,
     width: double.infinity,
-    decoration: const BoxDecoration(
-        color: Colors.blue,
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(60))),
+    decoration: BoxDecoration(
+        color: Colors.blue.shade800,
+        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(60))),
     child: Padding(
       padding: const EdgeInsets.all(20),
       child: Text(title,

@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class RouteBudget extends StatelessWidget {
-  const RouteBudget({super.key, required this.header});
-
-  final Widget header;
+  const RouteBudget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +22,31 @@ class RouteBudget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Weekly Budget")),
       body: Center(
-        child: Container(
-          padding: const EdgeInsets.fromLTRB(10, 10, 0, 20),
-          color: Color.fromARGB(255, 15, 21, 57),
-          height: double.infinity,
-          child:
-              // header,
-              SizedBox(
-            height: 560,
-            child: charts.BarChart(
-              series,
-              animate: true,
-              primaryMeasureAxis: coloredYAxis,
-              domainAxis: coloredXAxis,
+        child: Stack(
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(10, 10, 0, 20),
+              height: double.infinity,
+              child: SizedBox(
+                height: 560,
+                child: charts.BarChart(
+                  series,
+                  animate: true,
+                  primaryMeasureAxis: coloredYAxis,
+                  domainAxis: coloredXAxis,
+                ),
+              ),
             ),
-          ),
+            SizedBox(
+              height: 230,
+              child: Divider(
+                color: Colors.red.shade700,
+                thickness: 3,
+                endIndent: 20,
+                indent: 53,
+              ),
+            )
+          ],
         ),
       ),
     );
