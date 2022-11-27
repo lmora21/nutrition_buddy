@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cs422_gr4_nutribuddy/exercise_info_route.dart';
 import 'package:cs422_gr4_nutribuddy/home_route_cal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,7 +16,6 @@ void main() {
     setWindowMaxSize(const Size(500, 800));
     setWindowMinSize(const Size(500, 800));
   }
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   runApp(const MyApp());
 }
 
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           primary: Colors.blue.shade800,
           brightness: Brightness.dark,
           onPrimary: Colors.white,
-          secondary: Colors.blue.shade800,
+          secondary: Colors.white,
           onSecondary: Colors.black,
           error: Colors.pink,
           onError: Colors.black,
@@ -55,50 +55,6 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class ExerInfoScreen extends StatefulWidget {
-  final String title;
-  final String desc;
-  final String image;
-
-  const ExerInfoScreen(
-      {super.key,
-      required this.title,
-      required this.desc,
-      required this.image});
-
-  @override
-  State<ExerInfoScreen> createState() => _ExerInfoScreenState();
-}
-
-class _ExerInfoScreenState extends State<ExerInfoScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Text(widget.title, style: const TextStyle(fontSize: 50)),
-            Image.asset("images/${widget.image}", width: 400, height: 400),
-            Expanded(
-              child: ListView(
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-                      child: Text(widget.desc,
-                          style: const TextStyle(fontSize: 16, height: 2.0)))
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -293,6 +249,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             BottomNavigationBar(
               backgroundColor: Colors.transparent,
+              unselectedItemColor: Colors.blue.shade800,
               elevation: 0,
               currentIndex: _newNdx,
               items: const <BottomNavigationBarItem>[
