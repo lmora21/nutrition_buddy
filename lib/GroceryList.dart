@@ -21,7 +21,7 @@ class GroceryList {
     "4 Onions",
     "5 Bananas",
     "1 lb Sweet Potatoes",
-    "2 cans Garbanzo Beans",
+    "2 cans Beans",
     "Turkey Burgers",
     "Chicken Breasts"
   ];
