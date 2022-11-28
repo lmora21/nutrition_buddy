@@ -38,7 +38,7 @@ class _DietScreen extends State<DietScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Hero(tag: GroceryList.food[i], child:
-              Expanded(flex: 1, child: IconButton(
+              IconButton(
                 padding: EdgeInsets.zero,
                 icon: const Icon(Icons.info_outline, size: 45), onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -46,7 +46,7 @@ class _DietScreen extends State<DietScreen> {
                 }));
               },
 
-              ))),
+              )),
               Text(GroceryList.food[i], style: const TextStyle(fontSize: 25),),
               Row(children: [
               Text("\$" "${GroceryList.prices[i]}" ".00", style: const TextStyle(fontSize: 25),),
