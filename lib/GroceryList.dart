@@ -8,7 +8,7 @@ class GroceryList {
     "Onion",
     "Banana",
     "Sweet Potato",
-    "Garbanzo Beans",
+    "Beans",
     "Turkey Burger",
     "Chicken Breast"
   ];
